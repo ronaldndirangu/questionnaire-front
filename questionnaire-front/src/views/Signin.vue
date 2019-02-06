@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    async signIn(e) {
+    signIn(e) {
       e.preventDefault();
       axios.post('http://localhost:5000/api/v1/auth/signin', {
         email: this.email,
@@ -40,8 +40,7 @@ export default {
       })
         .then(res => {
           const { token, user } = res.data.data[0];
-          localStorage.setItem(token, token);
-          localStorage.setItem(user, user);
+          localStorage.setItem('token', token);
           this.$router.push('/meetups')
         })
         .catch(err => console.log(err));

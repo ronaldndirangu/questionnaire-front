@@ -7,11 +7,7 @@
 <script>
 export default {
   name: "Banner",
-  data() {
-    return {
-      message: "\"Crowd source questions for any meetup\""
-    }
-  }
+  props: ['message']
 }
 </script>
 

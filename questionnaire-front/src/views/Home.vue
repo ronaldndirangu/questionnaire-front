@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Banner />
+      <Banner :message="message" />
       <Card /> 
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
   },
   created() {
     this.$store.dispatch('getMeetups');
+  },
+  data() {
+    return {
+      message: "Crowd source questions for your meetup"
+    }
   }
 }
 </script>

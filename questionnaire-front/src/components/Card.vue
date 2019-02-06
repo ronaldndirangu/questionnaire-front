@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="card" v-for="meetup in meetups" v-bind:key="meetup._id">
+    <div class="card" v-for="meetup in getMeetups" v-bind:key="meetup._id" @click="getMeetup(meetup._id)">
       <div class="image">
         <img src="../assets/meetup.jpg" alt="">
       </div>
@@ -24,18 +24,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: "Card",
-  computed: mapState([
-    'meetups'
-  ]),
+  computed: {
+    ...mapGetters([
+      'getMeetups',
+    ])
+  },
+  methods: {
+    getMeetup(meetupId) {
+      this.$router.push(`/meetups/${meetupId}`);
+    }
+  },
   data() {
     return {
-      date: 'SAT, APR 6',
-      title: 'Nairobi Google Search Engine Optimization Training',
-      location: 'IHUB, Nairobi'
+      date: 'SAT, APR 6'
     }
   }
 }
@@ -44,7 +49,8 @@ export default {
 <style scoped>
   .row {
     display: flex;
-    width: 80%;
+    flex-wrap: wrap;
+    width: 100%;
   }
   .card {
     display: flex;
@@ -55,6 +61,7 @@ export default {
     height: 300px;
     margin: 10px -50px 10px 80px;
     box-shadow: 0 8px 6px -6px rgb(209, 208, 208);
+    cursor: pointer;
   }
   .body {
     display: flex;
