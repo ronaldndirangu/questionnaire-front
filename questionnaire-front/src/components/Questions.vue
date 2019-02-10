@@ -12,12 +12,23 @@
           <div class="body">
             <span>{{ question.body }}</span>
           </div>
+          <div class="question-btns">
+            <div class="upvote">
+              <button class="btn" type="submit"><i class="fas fa-thumbs-up"></i></button>
+            </div>
+            <div class="downvote">
+              <button class="btn" type="submit"><i class="fas fa-thumbs-down"></i></button>
+            </div>
+            <div class="comments">
+              <button  class="btn" type="submit"><i class="fas fa-comment"></i></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div v-else>
       <div class="no-questions">
-        <span>There no questions for this meetup</span>
+        <span>There are no questions for this meetup</span>
       </div>
     </div>
   </div>
@@ -68,6 +79,25 @@ export default {
   .body {
     font-style: italic;
     font-size: 0.9em;
+    margin: 5px auto;
+  }
+  .question-btns {
+    display: flex;
+    flex-direction: row;
+    margin: 2px auto;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .btn {
+    padding: 5px 8px;
+    margin: 4px 4px;
+    background: none;
+    border: solid 1px #000;
+    border-radius: 5px;
+  }
+  .btn:focus {
+    outline: none;
   }
 </style>
 

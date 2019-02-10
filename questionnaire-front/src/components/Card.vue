@@ -7,7 +7,7 @@
       <div class="body"> 
         <div class="left">
           <div class="date">
-            {{ date }}
+            {{ formatDate(meetup.happeningOn) }}
           </div>
         </div>
         <div class="right">
@@ -26,6 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import moment from 'moment';
 
 export default {
   name: "Card",
@@ -37,6 +38,9 @@ export default {
   methods: {
     getMeetup(meetupId) {
       this.$router.push(`/meetups/${meetupId}`);
+    },
+    formatDate(date) {
+      return moment(date).format('ll');
     }
   },
   data() {
@@ -66,19 +70,35 @@ export default {
   }
   .body {
     display: flex;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin: 5px 3px;
+    height: 100%;
+    width: 100%;
     color: #004cc7;
   }
   .left {
-    flex-basis: 30%;
+    flex-basis: 35%;
+    flex-wrap: wrap;
   }
   .right{
-    flex-basis: 70%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding-right: 7px;
+    flex-basis: 65%;
+    height: 100%;
+    width: 100%;
   }
   .title {
     color: rgb(37, 37, 37);
     padding-bottom: 5px;
+  }
+  .location {
+    position: absolute;
+    bottom: 10px;
+    width: 95%;
+    border-top: solid 1px #ccc;
+    padding-top: 5px;
+    padding-left: 5px;
   }
   img {
     height: 200px;
