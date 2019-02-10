@@ -3,7 +3,7 @@
     <div class="header">
       <span>Questions</span>
     </div>
-    <div v-if="getQuestions.length > 0">
+    <div v-if="getQuestions.length > 0" class="has-questions">
       <div v-for="question in getQuestions" :key="question._id">
         <div class="question-content">
           <div class="title">
@@ -46,11 +46,14 @@ export default {
     font-size: 1.5em;
   }
   .questions-container {
-    padding: 15px 15px;
+    padding: 10px 15px;
   }
   .question-content {
     padding: 8px 10px;
     border-bottom: dotted 1px #ccc;
+  }
+  .has-questions {
+    margin-bottom: 3%;
   }
   .no-questions {
     display: flex;

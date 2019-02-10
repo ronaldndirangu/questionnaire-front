@@ -15,6 +15,7 @@
             {{ meetup.topic }}
           </div>
           <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
             {{ meetup.location }}
           </div>
         </div>

@@ -31,7 +31,7 @@ export default {
       align-content: center;
       background: #fff;
       width: 70%;
-      margin: 8% 15%;
+      margin: 9% 15%;
       z-index: 5;
       position: absolute;
       top: 0;
