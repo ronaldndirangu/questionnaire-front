@@ -9,6 +9,7 @@ export default new vuex.Store({
   state: {
     meetup: {},
     meetups: [],
+    questions: [],
     errors: []
   },
   mutations: {
@@ -19,7 +20,10 @@ export default new vuex.Store({
       state.meetup = meetupBody;
     },
     'GET_MEETUP': (state, meetup) => {
-      state.meetup = meetup.data
+      state.meetup = meetup.data;
+    },
+    'GET_QUESTIONS': (state, questions) => {
+      state.questions = questions.data[0];
     },
     'UPDATE_ERRORS': (state, errors) => {
       state.errors = errors
@@ -40,6 +44,11 @@ export default new vuex.Store({
       MeetupServices.getMeetup(meetupId)
         .then(res => commit('GET_MEETUP', res.data))
         .catch(err => commit('UPDATE_ERRORS', err.response.data))
+    },
+    getQuestions: ({commit}, meetupId) => {
+      MeetupServices.getQuestions(meetupId)
+        .then(res => commit('GET_QUESTIONS', res.data))
+        .catch(err => commit('UPDATE_ERRORS', err.response.data))
     }
   },
   getters: {
@@ -48,6 +57,9 @@ export default new vuex.Store({
     },
     getMeetup: state => {
       return state.meetup;
+    },
+    getQuestions: state => {
+      return state.questions;
     }
   }
 });
