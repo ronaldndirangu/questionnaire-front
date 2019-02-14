@@ -13,34 +13,31 @@ export default {
 
 <style scoped>
   .save {
-    padding: 2% 6%;
+    padding: 2.2% 3.8%;
     margin: 2px 10px;
     background: none;
-    border: solid 1px rgb(99, 182, 92);
-    color:  rgb(99, 182, 92);
+    border: solid 1px #ccc;
+    color:  #000;
     border-radius: 5px;
     font-size: 0.8em;
   }
-  .save:hover {
-    background: rgb(99, 182, 92);
-    color: #fff;
+  .save:hover, .cancel:hover  {
+    border: solid 1px #004cc7;
+    color: #004cc7;
   }
   .save:focus {
     outline: none;
   }
   .cancel {
-    padding: 2% 5%;
+    padding: 2.1% 3.6%;
     margin: 2px 5px;
     background: none;
-    border: solid 1px rgb(218, 84, 75);
-    color:  rgb(218, 84, 75);
+    border: solid 1px #ccc;
+    color:  #000;
     border-radius: 5px;
     font-size: 0.8em;
   }
-  .cancel:hover {
-    background: rgb(218, 84, 75);
-    color: #fff;
-  }
+
   .cancel:focus {
     outline: none;
   }

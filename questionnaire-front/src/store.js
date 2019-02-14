@@ -10,6 +10,7 @@ export default new vuex.Store({
     meetup: {},
     meetups: [],
     questions: [],
+    showModal: false,
     errors: []
   },
   mutations: {
@@ -24,6 +25,9 @@ export default new vuex.Store({
     },
     'GET_QUESTIONS': (state, questions) => {
       state.questions = questions.data[0];
+    },
+    'TOGGLE_MODAL': (state) => {
+      state.showModal = !state.showModal;
     },
     'UPDATE_ERRORS': (state, errors) => {
       state.errors = errors
@@ -49,6 +53,9 @@ export default new vuex.Store({
       MeetupServices.getQuestions(meetupId)
         .then(res => commit('GET_QUESTIONS', res.data))
         .catch(err => commit('UPDATE_ERRORS', err.response.data))
+    },
+    toggleModal: ({commit}) => {
+      commit('TOGGLE_MODAL');
     }
   },
   getters: {
@@ -60,6 +67,9 @@ export default new vuex.Store({
     },
     getQuestions: state => {
       return state.questions;
+    },
+    showModal: state => {
+      return state.showModal;
     }
   }
 });

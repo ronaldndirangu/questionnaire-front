@@ -7,7 +7,7 @@
       <div class="body"> 
         <div class="left">
           <div class="date">
-            {{ formatDate(meetup.happeningOn) }}
+            {{ meetup.happeningOn | date }}
           </div>
         </div>
         <div class="right">
@@ -38,14 +38,6 @@ export default {
   methods: {
     getMeetup(meetupId) {
       this.$router.push(`/meetups/${meetupId}`);
-    },
-    formatDate(date) {
-      return moment(date).format('ll');
-    }
-  },
-  data() {
-    return {
-      date: 'SAT, APR 6'
     }
   }
 }
@@ -97,7 +89,7 @@ export default {
     bottom: 10px;
     width: 95%;
     border-top: solid 1px #ccc;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 5px;
   }
   img {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Banner />
+    <Modal />
     <div class="container">
       <MeetupDetails />
       <Questions />
@@ -12,11 +13,13 @@
 import Banner from '../components/Banner.vue';
 import Questions from '../components/Questions.vue';
 import MeetupDetails from '../components/MeetupDetails.vue';
+import Modal from '../components/Modal.vue';
 
 export default {
   name: 'ViewMeetup',
   components: {
     Banner,
+    Modal,
     MeetupDetails,
     Questions
   }

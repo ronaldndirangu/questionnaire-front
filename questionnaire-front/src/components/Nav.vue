@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   nav {
     background: #fff;
     margin-top: 0px auto;

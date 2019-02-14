@@ -20,7 +20,7 @@
               <button class="btn" type="submit"><i class="fas fa-thumbs-down"></i></button>
             </div>
             <div class="comments">
-              <button  class="btn" type="submit"><i class="fas fa-comment"></i></button>
+              <button  @click="openCommentModal" class="btn" type="submit"><i class="fas fa-comment"></i></button>
             </div>
           </div>
         </div>
@@ -47,6 +47,11 @@ export default {
   created() {
     const { meetupId } = this.$route.params;
     this.$store.dispatch('getQuestions', meetupId);
+  },
+  methods: {
+    openCommentModal() {
+      this.$store.dispatch('toggleModal');
+    }
   }
 }
 </script>
