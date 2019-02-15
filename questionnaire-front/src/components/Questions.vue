@@ -20,7 +20,7 @@
               <button class="btn" type="submit"><i class="fas fa-thumbs-down"></i></button>
             </div>
             <div class="comments">
-              <button  @click="openCommentModal" class="btn" type="submit"><i class="fas fa-comment"></i></button>
+              <button  @click="openCommentModal(question._id)" class="btn" type="submit"><i class="fas fa-comment"></i></button>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "Questions",
@@ -49,7 +49,10 @@ export default {
     this.$store.dispatch('getQuestions', meetupId);
   },
   methods: {
-    openCommentModal() {
+    openCommentModal(questionId) {
+      const { meetupId } = this.$route.params;
+      this.$store.dispatch('getQuestion', { meetupId, questionId });
+      this.$store.dispatch('getComments', { meetupId, questionId });
       this.$store.dispatch('toggleModal');
     }
   }

@@ -16,6 +16,12 @@ export class MeetupServices {
     return axios.get(`http://localhost:5000/api/v1/meetups/${meetupId}`);
   }
   static getQuestions(meetupId) {
-    return axios.get(`http://localhost:5000/api/v1/meetups/${meetupId}/questions`)
+    return axios.get(`http://localhost:5000/api/v1/meetups/${meetupId}/questions`);
+  }
+  static getQuestion(meetupId, questionId) {
+    return axios.get(`http://localhost:5000/api/v1/meetups/${meetupId}/questions/${questionId}`);
+  }
+  static getComments(meetupId, questionId) {
+    return axios.get(`http://localhost:5000/api/v1/meetups/${meetupId}/questions/${questionId}/comments`);
   }
 }

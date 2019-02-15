@@ -10,6 +10,8 @@ export default new vuex.Store({
     meetup: {},
     meetups: [],
     questions: [],
+    comments: [],
+    question: [],
     showModal: false,
     errors: []
   },
@@ -25,6 +27,12 @@ export default new vuex.Store({
     },
     'GET_QUESTIONS': (state, questions) => {
       state.questions = questions.data[0];
+    },
+    'GET_QUESTION': (state, question) => {
+      state.question = question.data[0];
+    },
+    'GET_COMMENTS': (state, comments) => {
+      state.comments = comments.data[0];
     },
     'TOGGLE_MODAL': (state) => {
       state.showModal = !state.showModal;
@@ -54,6 +62,16 @@ export default new vuex.Store({
         .then(res => commit('GET_QUESTIONS', res.data))
         .catch(err => commit('UPDATE_ERRORS', err.response.data))
     },
+    getQuestion: ({commit}, { meetupId, questionId }) => {
+      MeetupServices.getQuestion(meetupId, questionId)
+        .then(res => commit('GET_QUESTION', res.data))
+        .catch(err => commit('UPDATE_ERRORS', err.response.data))
+    },
+    getComments: ({commit}, {meetupId, questionId}) => {
+      MeetupServices.getComments(meetupId, questionId)
+        .then(res => commit('GET_COMMENTS', res.data))
+        .catch(err => commit('UPDATE_ERRORS', err.response.data))
+    },
     toggleModal: ({commit}) => {
       commit('TOGGLE_MODAL');
     }
@@ -67,6 +85,12 @@ export default new vuex.Store({
     },
     getQuestions: state => {
       return state.questions;
+    },
+    getQuestion: state => {
+      return state.question;
+    },
+    getComments: state => {
+      return state.comments;
     },
     showModal: state => {
       return state.showModal;
